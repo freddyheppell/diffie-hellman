@@ -30,7 +30,8 @@ public class Server {
             Socket server = serverSocket.accept();
 
             awaitingConnection.hide();
-            ProgressDialog working = new ProgressDialog("Working...");
+
+            ProgressDialog working = new ProgressDialog("S Working...");
 
             System.out.println("Just connected to " + server.getRemoteSocketAddress());
             DataInputStream in = new DataInputStream(server.getInputStream());

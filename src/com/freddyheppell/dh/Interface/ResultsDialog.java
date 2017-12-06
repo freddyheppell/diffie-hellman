@@ -61,10 +61,10 @@ public class ResultsDialog extends JDialog {
     public static void main(BigInteger key) {
         ResultsDialog dialog = new ResultsDialog(key.toString());
         dialog.pack();
-        dialog.setVisible(true);
-        dialog.setTitle(Settings.title);
-        dialog.setPreferredSize(new Dimension(600, 300));
+        dialog.setSize(new Dimension(600, 300));
         dialog.setLocationRelativeTo(null);
+        dialog.setTitle(Settings.title);
+        dialog.setVisible(true);
         System.exit(0);
     }
 }

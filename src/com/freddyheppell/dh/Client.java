@@ -8,7 +8,9 @@ import com.freddyheppell.dh.Message.Parser;
 import com.freddyheppell.dh.Utility.GenerateKey;
 import com.freddyheppell.dh.Utility.Settings;
 
+import java.awt.*;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
 import java.net.Socket;
 import java.util.Map;
@@ -16,7 +18,6 @@ import java.util.Map;
 public class Client {
     public static void main(String ipAddress, String port) {
         try {
-            ProgressDialog connecting = new ProgressDialog("Connecting...");
             System.out.println(String.format("Attempting connection to %s:%s", ipAddress, port));
 
             int serverPort = Integer.parseInt(port);
@@ -27,9 +28,8 @@ public class Client {
             OutputStream outputStream = client.getOutputStream();
             DataOutputStream out = new DataOutputStream(outputStream);
 
-            connecting.hide();
+            ProgressDialog working = new ProgressDialog("CWorking...");
 
-            ProgressDialog working = new ProgressDialog("Working...");
 
             // Send connection message
             ConnectedMessage connectedMessage = new ConnectedMessage();
@@ -66,7 +66,6 @@ public class Client {
             System.out.println(String.format("k=%d", k));
 
             working.hide();
-
             ResultsDialog.main(k);
 
         } catch (IOException e) {

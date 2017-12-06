@@ -6,30 +6,36 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ProgressDialog {
-    private JFrame frame = new JFrame(Settings.title);
+
+    private JDialog dialog;
 
     public ProgressDialog(String message) {
-        Container cp = frame.getContentPane();
-        cp.setLayout(new BoxLayout(cp, BoxLayout.PAGE_AXIS));
 
-        JLabel label = new JLabel(message);
         JProgressBar progressBar = new JProgressBar();
-
         progressBar.setIndeterminate(true);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        progressBar.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        cp.add(new JLabel(message));
-        cp.add(progressBar);
+        JTextArea label = new JTextArea(message);
+        label.setEditable(false);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(450, 70);
-        frame.setLocationRelativeTo(null);
-        frame.pack();
-        frame.setVisible(true);
+        JPanel panel = new JPanel(new BorderLayout(5, 5));
+        panel.add(label, BorderLayout.PAGE_START);
+        panel.add(progressBar, BorderLayout.CENTER);
+        panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        dialog = new JDialog();
+        dialog.getContentPane().add(panel);
+        dialog.setResizable(false);
+        dialog.pack();
+        dialog.setSize(500, dialog.getHeight());
+        dialog.setLocationRelativeTo(null);
+        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dialog.setAlwaysOnTop(false);
+        dialog.setVisible(true);
+        label.setBackground(panel.getBackground());
+
     }
 
     public void hide() {
-        frame.setVisible(false);
+        dialog.dispose();
     }
 }

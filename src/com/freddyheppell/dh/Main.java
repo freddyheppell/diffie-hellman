@@ -4,6 +4,8 @@ import com.freddyheppell.dh.Interface.ClientServerPicker;
 import com.freddyheppell.dh.Interface.ConnectionDialog;
 import com.freddyheppell.dh.Utility.Settings;
 
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
 

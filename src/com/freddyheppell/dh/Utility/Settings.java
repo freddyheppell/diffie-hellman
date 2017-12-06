@@ -1,5 +1,8 @@
 package com.freddyheppell.dh.Utility;
 
+import sun.misc.IOUtils;
+import sun.nio.ch.IOUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -15,7 +18,7 @@ public class Settings {
         InputStream is = classloader.getResourceAsStream("p.txt");
 
         try {
-            p = new BigInteger(is.readAllBytes());
+            p = new BigInteger(org.apache.commons.io.IOUtils.toByteArray(is));
         } catch (IOException e) {
             e.printStackTrace();
         }
